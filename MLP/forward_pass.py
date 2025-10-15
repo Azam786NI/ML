@@ -36,21 +36,21 @@ def calculate_forward_pass(input_seq,weights,bias,ln_w,ln_b,activation="ReLU"):
         cal=np.dot(last_step,w)
         cal+=b
         a.append(cal)
-        print(f"Z{idx}",cal)
+        print(f"------------- Z{idx}",cal)
 
         # LN
         if idx!=len(w):
-            cal=(cal * ln_w[idx-1]) + ln_b[idx-1]
-            print(f"multiplying with ln weights {cal}")
-
             cal=LN(cal)
-            print(f"LN {cal}")
+            print(f"------------- Z_norm {cal}")
+
+            cal=(cal * ln_w[idx-1]) + ln_b[idx-1]
+            print(f"------------- Z_scale {cal}")
 
             # activation         
             cal=handel_activation(cal,activation)
         
         sa.append(cal)
-        print(f"A{idx}",cal,end="\n===\n")
+        print(f"------------- A{idx}",cal,end=f"\n\n=== pass{idx} completed ====\n\n")
 
         last_step=cal
 

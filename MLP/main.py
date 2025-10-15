@@ -14,13 +14,13 @@ weights,bias,ln_w,ln_b=initialize_weights(len(input_seq),len(output_seq),hidden_
 a,sa=calculate_forward_pass(input_seq,weights,bias,ln_w,ln_b)
 
 loss=sa[-1]-output_seq
-print("**********loss ",loss)
 
 error=[]
 for i in loss:
     error.append(i**2)
 
-print("error ",0.5 * sum(error))
+print("LOSS ",loss)
+print("ERROR ",0.5 * sum(error))
 
 gradient=calculate_gradient(input_seq,a,sa,weights,loss)
 
