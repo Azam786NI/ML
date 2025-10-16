@@ -1,26 +1,27 @@
 import numpy as np
+
+
 def LN(lis):
-    mean=np.average(lis)
-    print("\nmean ",mean)
+    mean = np.average(lis)
+    print("\nmean ", mean)
 
-    variance=0
+    variance = 0
 
     for i in lis:
-        deviation=i-mean    
-        variance+=deviation**2
+        deviation = i - mean
+        variance += deviation**2
 
-        print("deviation ",deviation)
+        print("deviation ", deviation)
 
-    variance=variance/len(lis)
-    print("nvariance ",variance)
+    variance = variance / len(lis)
+    print("variance ", variance)
 
-    standard_deviation=variance**(1/2)
-    print("standard_deviation ",standard_deviation,end="\n\n")
+    standard_deviation = variance ** (1 / 2)
+    print("standard_deviation ", standard_deviation, end="\n\n")
 
-    normalized_list=[]
+    normalized_list = []
     for i in lis:
-        z=(i-mean)/standard_deviation
+        z = (i - mean) / standard_deviation
         normalized_list.append(z)
-
 
     return [normalized_list]
